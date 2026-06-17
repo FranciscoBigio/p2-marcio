@@ -1,0 +1,15 @@
+{
+  "name": "rpg-battle-system",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Simulador de Combate de RPG com Clean Architecture e SOLID",
+  "main": "src/infrastructure/index.js",
+  "scripts": {
+    "start": "node src/infrastructure/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
