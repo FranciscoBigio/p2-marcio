@@ -1,0 +1,52 @@
+Funcionalidade: Rpg Simulator
+  Como mestre de RPG que planeja encontros taticos
+  Eu quero simular rodadas de combate com tabelas de probabilidade simetricas e interacoes elementares
+  Para testar e calibrar a letalidade do sistema sem o uso de emojis.
+
+  Cenário: Sorteio simetrico de ameaca comum no primeiro encontro (Chance de 1/4)
+    Dado que a tabela de encontros comuns contem 4 criaturas distintas
+    Quando o sistema computar a rolagem de ameaca para o primeiro combate
+    Entao o Monstro de Sangue deve possuir exatamente 25% de chance de ser invocado
+    E o Monstro de Conhecimento deve possuir exatamente 25% de chance de ser invocado
+    E o Monstro de Morte deve possuir exatamente 25% de chance de ser invocado
+    E o Monstro de Energia deve possuir exatamente 25% de chance de ser invocado
+
+  Cenário: Sorteio simetrico de ameaca extrema no segundo encontro (Chance de 1/4)
+    Dado que a tabela de elite contem 4 chefes elementares soberanos
+    Quando o sistema computar a rolagem de ameaca para o segundo combate
+    Entao cada um dos 4 Bosses elementares deve possuir exatamente 25% de chance de ser selecionado
+
+  Cenário: Rolagem independente com chance de 1/5 para Drop de Itens
+    Dado que um novo investigador esta a ser instanciado pela Factory
+    Quando as rolagens de probabilidade de loot forem executadas individualmente
+    Entao deve haver 20% de chance de equipar uma armadura aleatoria
+    E deve haver 20% de chance de equipar uma arma aleatoria
+    E deve haver 20% de chance de manifestar um ritual aleatorio
+
+  Cenário: Mudanca de Elemento Nativo atraves de Equipamento Especial
+    Dado que um personagem possui originalmente o elemento nativo FISICO
+    Quando ele for envelopado pelo decorator da "Armadura de Sangue"
+    Entao o metodo de consulta do elemento nativo deve retornar SANGUE
+
+  Cenário: Determinacao da ordem de turnos por Iniciativa Dinamica
+    Dado que o Combatente possui bonus de iniciativa +3
+    E o Monstro de Energia possui bonus de iniciativa +6
+    Quando os dados de D20 de iniciativa forem gerados no inicio da batalha
+    Entao a entidade com maior somatorio final deve assumir a vanguarda e agir primeiro
+
+  Cenário: Vulnerabilidade Elemental com Dano Dobrado
+    Dado que um personagem ataca usando uma arma de elemento MORTE
+    E o oponente possui o elemento nativo SANGUE
+    Quando o ataque for bem-sucedido contra a defesa do alvo
+    Entao o dano computado original deve ser multiplicado por 2
+
+  Cenário: Resistencia Elemental com Mitigacao e Arredondamento para Cima
+    Dado que uma criatura ataca com uma arma do elemento ENERGIA
+    E o alvo possui o elemento nativo CONHECIMENTO
+    Quando o dano do ataque for calculado com um valor impar como 15
+    Entao o dano sofrido deve ser dividido por 2 e arredondado para cima, resultando em 8
+
+  Cenário: Imunidade de Afinidade do mesmo elemento com Reducao Fixa
+    Dado que um alvo de elemento nativo SANGUE sofre um ataque de arma do elemento SANGUE
+    Quando o dano for processado pelo motor de combate
+    Entao o dano final deve sofrer uma subtracao fixa de 5 se for monstro normal ou 10 se for um Boss
