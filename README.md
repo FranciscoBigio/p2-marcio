@@ -1,3 +1,5 @@
+Justificativa Técnicas
+
 1. Abordagem de Arquitetura Limpa e Divisão em Microsserviços
 A decisão de estruturar o simulador de combates utilizando a Arquitetura Limpa (Clean Architecture) visa isolar completamente as regras essenciais do jogo (cálculos matemáticos, matriz de elementos, rolagem de dados) de detalhes voláteis de infraestrutura (renderização de cores no terminal, frameworks de teste ou persistência de dados).
 
